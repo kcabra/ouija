@@ -1,29 +1,26 @@
 extends Node2D
 
-onready var ouija = $chars # node whose childs are the clickable chars
+onready var ouija = $keyboard # node whose childs are the clickable chars
 onready var target_spaces = $blank # node whose childs are the blanks and discovered chars
-var target: String = "sasa"
+var target: String = "mother"
+
+var tried_keys: Array = []
 
 func _ready():
-	for ch in target:
-		add_blank(ch)
+	for i in range(target.length()):
+		var letter_size = Vector2(25, 35)
+		var ch = target[i]
+		var blank = Sprite.new()
+		blank.set_script(load("res://scripts/char.gd"))
+		blank.character = ch
+		var total_size = letter_size.x * target.length()
+		blank.scale = Vector2.ONE / 4
+		blank.position = Vector2(-total_size/2, 0) + Vector2(letter_size.x, 0)*i
+		target_spaces.add_child(blank)
 
-func add_blank(ch):
-	var blank = TextureRect.new()
-	blank.set_script(load("res://scripts/char.gd"))
-	blank.character = ch
-	target_spaces.add_child(blank)
-
-func _input(event):
-	if (event is InputEventMouseButton
-			and event.button_index == BUTTON_LEFT
-			and event.pressed == true):
-		var mouse_pos = get_global_mouse_position()
-		for ch in ouija.get_children():
-			if ch.get_global_rect().has_point(mouse_pos):
-				reveal(ch.name)
-
-func reveal(ch):
+func reveal(node):
+	var ch = node.name
+	node.modulate.a = 0.5
 	var missed = true
 	for node in $blank.get_children():
 		if node.character == ch:
@@ -31,3 +28,13 @@ func reveal(ch):
 			missed = false
 	if missed:
 		print("errrooooouuuu")
+	check_victory()
+
+func check_victory():
+	var won = true
+	for child in target_spaces.get_children():
+		if not child.revealed:
+			won = false
+			break
+	if won:
+		print("won")
