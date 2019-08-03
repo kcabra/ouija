@@ -29,7 +29,6 @@
 [ext_resource path="res://characters/v.png" type="Texture" id=27]
 [ext_resource path="res://characters/x.png" type="Texture" id=28]
 
-
 [node name="game" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -40,6 +39,7 @@ z_index = -1
 texture = ExtResource( 2 )
 
 [node name="ref_ouija" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 298, 659 )
 scale = Vector2( 2, 2 )
 z_index = 1
@@ -47,7 +47,6 @@ texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="keyboard" type="Node2D" parent="ref_ouija"]
-editor/display_folded = true
 
 [node name="a" type="TextureButton" parent="ref_ouija/keyboard"]
 margin_left = -92.0
@@ -258,3 +257,4 @@ script = ExtResource( 6 )
 
 [node name="blank" type="Position2D" parent="ref_ouija"]
 position = Vector2( 8.5, -10 )
+

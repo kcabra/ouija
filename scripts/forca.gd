@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var chances
+onready var dica
 onready var ouija = $keyboard # node whose childs are the clickable chars
 onready var target_spaces = $blank # node whose childs are the blanks and discovered chars
 var target: String = "mother"
@@ -7,6 +9,8 @@ var target: String = "mother"
 var tried_keys: Array = []
 
 func _ready():
+	chances = 5
+	dica = false
 	for i in range(target.length()):
 		var letter_size = Vector2(25, 35)
 		var ch = target[i]
@@ -28,6 +32,9 @@ func reveal(node):
 			missed = false
 	if missed:
 		print("errrooooouuuu")
+		chances = chances-1
+	check_dica()
+	check_loss()
 	check_victory()
 
 func check_victory():
@@ -38,3 +45,17 @@ func check_victory():
 			break
 	if won:
 		print("won")
+		
+func check_loss():
+	var missed = true
+	if chances == 0:
+		print("iou luse")
+		chances = 5
+		
+func check_dica():
+	if chances <= 2:
+		if dica == false:
+			dica = true
+			print("mostrando le dica")
+			
+			
