@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var ouija = $ouija # node whose childs are the clickable chars
+onready var ouija = $chars # node whose childs are the clickable chars
 onready var target_spaces = $blank # node whose childs are the blanks and discovered chars
 var target: String = "sasa"
 

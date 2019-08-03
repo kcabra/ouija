@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="ouija"
+run/main_scene="res://forca_test.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Data="*res://scripts/data_handler.gd"
 
 [display]
 
