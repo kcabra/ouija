@@ -2,6 +2,7 @@ extends Node2D
 
 onready var ouija = $keyboard # node whose childs are the clickable chars
 onready var target_spaces = $blank # node whose childs are the blanks and discovered chars
+onready var speak = $speak
 var target: String
 var tip: String
 
@@ -46,10 +47,11 @@ func reveal(node):
 			missed = false
 	if missed:
 		hp -= 1
-		print(hp)
 		tip_counter -= 1
-		if tip_counter == 0:
-			print(tip)
+		if tip_counter == 0 or hp <= 2:
+			speak.visible = true
+			speak.get_node("Label").text = tip
+			speak.get_node("Timer").start()
 			tip_counter -= 1
 		if hp == 0: # check loss
 			print("lost")

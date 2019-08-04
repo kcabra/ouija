@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://props/background.png" type="Texture" id=2]
@@ -31,7 +31,10 @@
 [ext_resource path="res://characters/w.png" type="Texture" id=29]
 [ext_resource path="res://characters/y.png" type="Texture" id=30]
 [ext_resource path="res://characters/z.png" type="Texture" id=31]
-[ext_resource path="res://soundtrack/background.wav" type="AudioStream" id=32]
+[ext_resource path="res://props/determination.png" type="Texture" id=32]
+[ext_resource path="res://props/caixa.png" type="Texture" id=33]
+[ext_resource path="res://title/Chomsky.otf" type="DynamicFontData" id=34]
+[ext_resource path="res://soundtrack/background.wav" type="AudioStream" id=35]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -39,6 +42,62 @@ script/source = "extends Node2D
 func _ready():
 	for child in get_children():
 		child.connect(\"pressed\", get_parent(), \"reveal\", [child])"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+onready var parent = get_parent()
+
+func _process(_delta):
+	match parent.hp:
+		5:
+			get_node(\"0\").visible = true
+			get_node(\"1\").visible = true
+			get_node(\"2\").visible = true
+			get_node(\"3\").visible = true
+			get_node(\"4\").visible = true
+		4:
+			get_node(\"0\").visible = true
+			get_node(\"1\").visible = true
+			get_node(\"2\").visible = true
+			get_node(\"3\").visible = true
+			get_node(\"4\").visible = false
+		3:
+			get_node(\"0\").visible = true
+			get_node(\"1\").visible = true
+			get_node(\"2\").visible = true
+			get_node(\"3\").visible = false
+			get_node(\"4\").visible = false
+		2:
+			get_node(\"0\").visible = true
+			get_node(\"1\").visible = true
+			get_node(\"2\").visible = false
+			get_node(\"3\").visible = false
+			get_node(\"4\").visible = false
+		1:
+			get_node(\"0\").visible = true
+			get_node(\"1\").visible = false
+			get_node(\"2\").visible = false
+			get_node(\"3\").visible = false
+			get_node(\"4\").visible = false
+		0:
+			get_node(\"0\").visible = false
+			get_node(\"1\").visible = false
+			get_node(\"2\").visible = false
+			get_node(\"3\").visible = false
+			get_node(\"4\").visible = false
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Sprite
+
+func _ready():
+	$Timer.connect(\"timeout\", self, \"set_visible\", [false])
+"
+
+[sub_resource type="DynamicFont" id=4]
+size = 33
+font_data = ExtResource( 34 )
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends AudioStreamPlayer
@@ -61,6 +120,7 @@ position = Vector2( 0, -91 )
 texture = ExtResource( 3 )
 
 [node name="forca" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 298, 658 )
 scale = Vector2( 0.946667, 0.946667 )
 z_index = 1
@@ -285,15 +345,63 @@ texture_normal = ExtResource( 31 )
 position = Vector2( 17.9578, -71.831 )
 scale = Vector2( 2.11268, 2.11268 )
 
+[node name="determination" type="Node2D" parent="forca"]
+editor/display_folded = true
+script = SubResource( 3 )
+
+[node name="0" type="Sprite" parent="forca/determination"]
+position = Vector2( 3.16904, -636.972 )
+texture = ExtResource( 32 )
+
+[node name="1" type="Sprite" parent="forca/determination"]
+position = Vector2( -48.5916, -627.465 )
+texture = ExtResource( 32 )
+
+[node name="3" type="Sprite" parent="forca/determination"]
+position = Vector2( -97.1831, -608.451 )
+texture = ExtResource( 32 )
+
+[node name="2" type="Sprite" parent="forca/determination"]
+position = Vector2( 61.2676, -630.634 )
+texture = ExtResource( 32 )
+
+[node name="4" type="Sprite" parent="forca/determination"]
+position = Vector2( 108.803, -606.338 )
+texture = ExtResource( 32 )
+
+[node name="speak" type="Sprite" parent="forca"]
+visible = false
+position = Vector2( 0, -457.394 )
+scale = Vector2( 0.783166, 0.783166 )
+texture = ExtResource( 33 )
+script = SubResource( 5 )
+
+[node name="Label" type="Label" parent="forca/speak"]
+margin_left = -221.0
+margin_top = -77.0
+margin_right = 221.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "adslkja asjkdalsjkld asçdlkalçk saslçdasçlda aslçdals dçlas d"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Timer" type="Timer" parent="forca/speak"]
+wait_time = 2.5
+one_shot = true
+
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 32 )
+stream = ExtResource( 35 )
 volume_db = -5.0
 autoplay = true
 script = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
