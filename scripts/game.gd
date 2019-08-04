@@ -5,7 +5,7 @@ onready var forca_control = $forca
 
 var current_level = 0
 
-var monster_array: Array = ["crow", "bat", "frog", "plant", "moth", "crow", "spider"]
+var monster_array: Array = ["bat", "frog", "plant", "moth", "crow", "spider"]
 var loaded_monster = null
 
 func _ready():
@@ -33,6 +33,7 @@ func load_monster(monster_name):
 	self.add_child(mob_sprite)
 	mob_sprite.add_child(mob_sfx)
 	loaded_monster = mob_sprite
+
 
 func get_next_monster():
 	if not monster_array.empty():

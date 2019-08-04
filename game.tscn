@@ -56,6 +56,7 @@ z_index = -1
 texture = ExtResource( 2 )
 
 [node name="mist" type="Sprite" parent="bg"]
+modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 0, -91 )
 texture = ExtResource( 3 )
 
@@ -292,3 +293,13 @@ volume_db = -5.0
 autoplay = true
 script = SubResource( 2 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_left = -16.0
+margin_top = -11.0
+margin_right = 624.0
+margin_bottom = 813.0
+color = Color( 0, 0, 0, 1 )
