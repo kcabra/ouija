@@ -36,18 +36,7 @@ func load_monster(monster_name):
 
 func get_next_monster():
 	if not monster_array.empty():
-		get_node("CanvasLayer/ColorRect").visible = true
 		loaded_monster.queue_free()
-		yield(get_tree().create_timer(0.3), "timeout")
-		get_node("CanvasLayer/ColorRect").visible = false
-		yield(get_tree().create_timer(1.0), "timeout")
-		get_node("CanvasLayer/ColorRect").visible = true
-		yield(get_tree().create_timer(0.3), "timeout")
-		get_node("CanvasLayer/ColorRect").visible = false
-		yield(get_tree().create_timer(0.5), "timeout")
-		get_node("CanvasLayer/ColorRect").visible = true
-		yield(get_tree().create_timer(0.7), "timeout")
 		load_monster(monster_array.pop_front())
-		get_node("CanvasLayer/ColorRect").visible = false
 	else:
 		print("you win!")
