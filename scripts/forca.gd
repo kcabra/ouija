@@ -2,9 +2,7 @@ extends Node2D
 
 onready var ouija = $keyboard # node whose childs are the clickable chars
 onready var target_spaces = $blank # node whose childs are the blanks and discovered chars
-var target: String = "mother"
-
-var tried_keys: Array = []
+var target: String
 
 func _ready():
 	for i in range(target.length()):
@@ -37,4 +35,10 @@ func check_victory():
 			won = false
 			break
 	if won:
-		print("won")
+		get_parent().get_next_monster()
+
+func clear_scene():
+	for child in ouija.get_children():
+		child.modulate.a = 1
+	for child in target_spaces.get_children():
+		child.queue_free()

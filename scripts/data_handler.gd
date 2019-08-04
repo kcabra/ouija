@@ -17,4 +17,3 @@ func _ready():
 			monster_db[tier].append(monster)
 		else:
 			monster_db[tier] = [monster]
-	print(monster_db)
