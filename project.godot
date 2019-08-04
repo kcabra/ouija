@@ -27,3 +27,5 @@ Data="*res://scripts/data_handler.gd"
 
 window/size/width=600
 window/size/height=800
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"

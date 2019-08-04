@@ -1,36 +1,37 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
-[ext_resource path="res://background.png" type="Texture" id=2]
-[ext_resource path="res://ref_ouija.png" type="Texture" id=3]
-[ext_resource path="res://scripts/forca.gd" type="Script" id=4]
-[ext_resource path="res://characters/a.png" type="Texture" id=5]
-[ext_resource path="res://characters/b.png" type="Texture" id=6]
-[ext_resource path="res://characters/c.png" type="Texture" id=7]
-[ext_resource path="res://characters/d.png" type="Texture" id=8]
-[ext_resource path="res://characters/e.png" type="Texture" id=9]
-[ext_resource path="res://characters/f.png" type="Texture" id=10]
-[ext_resource path="res://characters/g.png" type="Texture" id=11]
-[ext_resource path="res://characters/h.png" type="Texture" id=12]
-[ext_resource path="res://characters/i.png" type="Texture" id=13]
-[ext_resource path="res://characters/j.png" type="Texture" id=14]
-[ext_resource path="res://characters/k.png" type="Texture" id=15]
-[ext_resource path="res://characters/l.png" type="Texture" id=16]
-[ext_resource path="res://characters/m.png" type="Texture" id=17]
-[ext_resource path="res://characters/n.png" type="Texture" id=18]
-[ext_resource path="res://characters/o.png" type="Texture" id=19]
-[ext_resource path="res://characters/p.png" type="Texture" id=20]
-[ext_resource path="res://characters/q.png" type="Texture" id=21]
-[ext_resource path="res://characters/r.png" type="Texture" id=22]
-[ext_resource path="res://characters/s.png" type="Texture" id=23]
-[ext_resource path="res://characters/t.png" type="Texture" id=24]
-[ext_resource path="res://characters/u.png" type="Texture" id=25]
-[ext_resource path="res://characters/v.png" type="Texture" id=26]
-[ext_resource path="res://characters/x.png" type="Texture" id=27]
-[ext_resource path="res://characters/w.png" type="Texture" id=28]
-[ext_resource path="res://characters/y.png" type="Texture" id=29]
-[ext_resource path="res://characters/z.png" type="Texture" id=30]
-[ext_resource path="res://soundtrack/background.wav" type="AudioStream" id=31]
+[ext_resource path="res://props/background.png" type="Texture" id=2]
+[ext_resource path="res://props/mist.png" type="Texture" id=3]
+[ext_resource path="res://props/ouija.png" type="Texture" id=4]
+[ext_resource path="res://scripts/forca.gd" type="Script" id=5]
+[ext_resource path="res://characters/a.png" type="Texture" id=6]
+[ext_resource path="res://characters/b.png" type="Texture" id=7]
+[ext_resource path="res://characters/c.png" type="Texture" id=8]
+[ext_resource path="res://characters/d.png" type="Texture" id=9]
+[ext_resource path="res://characters/e.png" type="Texture" id=10]
+[ext_resource path="res://characters/f.png" type="Texture" id=11]
+[ext_resource path="res://characters/g.png" type="Texture" id=12]
+[ext_resource path="res://characters/h.png" type="Texture" id=13]
+[ext_resource path="res://characters/i.png" type="Texture" id=14]
+[ext_resource path="res://characters/j.png" type="Texture" id=15]
+[ext_resource path="res://characters/k.png" type="Texture" id=16]
+[ext_resource path="res://characters/l.png" type="Texture" id=17]
+[ext_resource path="res://characters/m.png" type="Texture" id=18]
+[ext_resource path="res://characters/n.png" type="Texture" id=19]
+[ext_resource path="res://characters/o.png" type="Texture" id=20]
+[ext_resource path="res://characters/p.png" type="Texture" id=21]
+[ext_resource path="res://characters/q.png" type="Texture" id=22]
+[ext_resource path="res://characters/r.png" type="Texture" id=23]
+[ext_resource path="res://characters/s.png" type="Texture" id=24]
+[ext_resource path="res://characters/t.png" type="Texture" id=25]
+[ext_resource path="res://characters/u.png" type="Texture" id=26]
+[ext_resource path="res://characters/v.png" type="Texture" id=27]
+[ext_resource path="res://characters/x.png" type="Texture" id=28]
+[ext_resource path="res://characters/w.png" type="Texture" id=29]
+[ext_resource path="res://characters/y.png" type="Texture" id=30]
+[ext_resource path="res://characters/z.png" type="Texture" id=31]
+[ext_resource path="res://soundtrack/background.wav" type="AudioStream" id=32]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -54,15 +55,21 @@ position = Vector2( 300, 400 )
 z_index = -1
 texture = ExtResource( 2 )
 
-[node name="forca" type="Sprite" parent="."]
-position = Vector2( 298, 659 )
-scale = Vector2( 2, 2 )
-z_index = 1
+[node name="mist" type="Sprite" parent="bg"]
+position = Vector2( 0, -91 )
 texture = ExtResource( 3 )
-script = ExtResource( 4 )
+
+[node name="forca" type="Sprite" parent="."]
+position = Vector2( 298, 658 )
+scale = Vector2( 0.946667, 0.946667 )
+z_index = 1
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="keyboard" type="Node2D" parent="forca"]
 editor/display_folded = true
+position = Vector2( 1.05634, -13.7324 )
+scale = Vector2( 2.11268, 2.11268 )
 script = SubResource( 1 )
 
 [node name="a" type="TextureButton" parent="forca/keyboard"]
@@ -71,7 +78,7 @@ margin_top = 10.5
 margin_right = -2.0
 margin_bottom = 150.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 
 [node name="b" type="TextureButton" parent="forca/keyboard"]
 margin_left = -87.0
@@ -79,7 +86,7 @@ margin_top = 11.5
 margin_right = 13.0
 margin_bottom = 151.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 7 )
 
 [node name="c" type="TextureButton" parent="forca/keyboard"]
 margin_left = -71.0
@@ -87,7 +94,7 @@ margin_top = 11.5
 margin_right = 29.0
 margin_bottom = 151.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
 
 [node name="d" type="TextureButton" parent="forca/keyboard"]
 margin_left = -56.0
@@ -95,7 +102,7 @@ margin_top = 12.5
 margin_right = 44.0
 margin_bottom = 152.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 9 )
 
 [node name="e" type="TextureButton" parent="forca/keyboard"]
 margin_left = -39.0
@@ -103,7 +110,7 @@ margin_top = 14.5
 margin_right = 61.0
 margin_bottom = 154.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 9 )
+texture_normal = ExtResource( 10 )
 
 [node name="f" type="TextureButton" parent="forca/keyboard"]
 margin_left = -22.0
@@ -111,7 +118,7 @@ margin_top = 16.5
 margin_right = 78.0
 margin_bottom = 156.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 11 )
 
 [node name="g" type="TextureButton" parent="forca/keyboard"]
 margin_left = -4.0
@@ -119,7 +126,7 @@ margin_top = 17.5
 margin_right = 96.0
 margin_bottom = 157.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 11 )
+texture_normal = ExtResource( 12 )
 
 [node name="h" type="TextureButton" parent="forca/keyboard"]
 margin_left = 11.0
@@ -127,7 +134,7 @@ margin_top = 14.5
 margin_right = 111.0
 margin_bottom = 154.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 12 )
+texture_normal = ExtResource( 13 )
 
 [node name="i" type="TextureButton" parent="forca/keyboard"]
 margin_left = 26.0
@@ -135,7 +142,7 @@ margin_top = 20.5
 margin_right = 126.0
 margin_bottom = 160.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 13 )
+texture_normal = ExtResource( 14 )
 
 [node name="j" type="TextureButton" parent="forca/keyboard"]
 margin_left = 42.5
@@ -143,7 +150,7 @@ margin_top = 19.5
 margin_right = 142.5
 margin_bottom = 159.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 14 )
+texture_normal = ExtResource( 15 )
 
 [node name="k" type="TextureButton" parent="forca/keyboard"]
 margin_left = 60.0
@@ -151,7 +158,7 @@ margin_top = 18.5
 margin_right = 160.0
 margin_bottom = 158.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 16 )
 
 [node name="l" type="TextureButton" parent="forca/keyboard"]
 margin_left = 76.5
@@ -159,7 +166,7 @@ margin_top = 20.0
 margin_right = 176.5
 margin_bottom = 160.0
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 16 )
+texture_normal = ExtResource( 17 )
 
 [node name="m" type="TextureButton" parent="forca/keyboard"]
 margin_left = -107.0
@@ -167,7 +174,7 @@ margin_top = 41.5
 margin_right = -7.0
 margin_bottom = 181.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 17 )
+texture_normal = ExtResource( 18 )
 
 [node name="n" type="TextureButton" parent="forca/keyboard"]
 margin_left = -93.0
@@ -175,7 +182,7 @@ margin_top = 41.5
 margin_right = 7.0
 margin_bottom = 181.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 18 )
+texture_normal = ExtResource( 19 )
 
 [node name="o" type="TextureButton" parent="forca/keyboard"]
 margin_left = -77.0
@@ -183,7 +190,7 @@ margin_top = 40.5
 margin_right = 23.0
 margin_bottom = 180.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 19 )
+texture_normal = ExtResource( 20 )
 
 [node name="p" type="TextureButton" parent="forca/keyboard"]
 margin_left = -63.0
@@ -191,7 +198,7 @@ margin_top = 40.5
 margin_right = 37.0
 margin_bottom = 180.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 20 )
+texture_normal = ExtResource( 21 )
 
 [node name="q" type="TextureButton" parent="forca/keyboard"]
 margin_left = -48.0
@@ -199,7 +206,7 @@ margin_top = 42.5
 margin_right = 52.0
 margin_bottom = 182.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 21 )
+texture_normal = ExtResource( 22 )
 
 [node name="r" type="TextureButton" parent="forca/keyboard"]
 margin_left = -33.0
@@ -207,7 +214,7 @@ margin_top = 43.5
 margin_right = 67.0
 margin_bottom = 183.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 22 )
+texture_normal = ExtResource( 23 )
 
 [node name="s" type="TextureButton" parent="forca/keyboard"]
 margin_left = -18.0
@@ -215,7 +222,7 @@ margin_top = 46.5
 margin_right = 82.0
 margin_bottom = 186.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 23 )
+texture_normal = ExtResource( 24 )
 
 [node name="t" type="TextureButton" parent="forca/keyboard"]
 margin_left = -3.0
@@ -223,7 +230,7 @@ margin_top = 46.5
 margin_right = 97.0
 margin_bottom = 186.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 24 )
+texture_normal = ExtResource( 25 )
 
 [node name="u" type="TextureButton" parent="forca/keyboard"]
 margin_left = 12.0
@@ -231,7 +238,7 @@ margin_top = 46.5
 margin_right = 112.0
 margin_bottom = 186.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 25 )
+texture_normal = ExtResource( 26 )
 
 [node name="v" type="TextureButton" parent="forca/keyboard"]
 margin_left = 28.5
@@ -239,7 +246,7 @@ margin_top = 46.0
 margin_right = 128.5
 margin_bottom = 186.0
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 26 )
+texture_normal = ExtResource( 27 )
 
 [node name="x" type="TextureButton" parent="forca/keyboard"]
 margin_left = 44.5
@@ -247,7 +254,7 @@ margin_top = 44.0
 margin_right = 144.5
 margin_bottom = 184.0
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 27 )
+texture_normal = ExtResource( 28 )
 
 [node name="w" type="TextureButton" parent="forca/keyboard"]
 margin_left = 62.5
@@ -255,7 +262,7 @@ margin_top = 44.5
 margin_right = 162.5
 margin_bottom = 184.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 28 )
+texture_normal = ExtResource( 29 )
 
 [node name="y" type="TextureButton" parent="forca/keyboard"]
 margin_left = 78.0
@@ -263,7 +270,7 @@ margin_top = 44.5
 margin_right = 178.0
 margin_bottom = 184.5
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 29 )
+texture_normal = ExtResource( 30 )
 
 [node name="z" type="TextureButton" parent="forca/keyboard"]
 margin_left = 93.5
@@ -271,13 +278,14 @@ margin_top = 45.0
 margin_right = 193.5
 margin_bottom = 185.0
 rect_scale = Vector2( 0.136228, 0.136228 )
-texture_normal = ExtResource( 30 )
+texture_normal = ExtResource( 31 )
 
 [node name="blank" type="Position2D" parent="forca"]
-position = Vector2( 8.5, -10 )
+position = Vector2( 17.9578, -71.831 )
+scale = Vector2( 2.11268, 2.11268 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 31 )
+stream = ExtResource( 32 )
 script = SubResource( 2 )
