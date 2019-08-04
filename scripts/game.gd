@@ -20,13 +20,16 @@ func load_monster(monster_name):
 	forca_control.target = monster["solve"]
 	forca_control.tip = monster["tip"]
 	forca_control._ready()
+	
 	var mob_sprite: Sprite = Sprite.new()
 	mob_sprite.texture = load("res://monsters/"+monster["sprite"]+".png")
 	mob_sprite.position = Vector2(300, 400)
+	
 	var mob_sfx = AudioStreamPlayer.new()
 	mob_sfx.stream = load("res://soundtrack/"+monster["sfx"]+".wav")
 	mob_sfx.autoplay = true
 	mob_sfx.volume_db = 5
+	
 	self.add_child(mob_sprite)
 	mob_sprite.add_child(mob_sfx)
 	loaded_monster = mob_sprite
@@ -34,7 +37,6 @@ func load_monster(monster_name):
 func get_next_monster():
 	if not monster_array.empty():
 		loaded_monster.queue_free()
-		forca_control.clear_scene()
 		load_monster(monster_array.pop_front())
 	else:
 		print("you win!")

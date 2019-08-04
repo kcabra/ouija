@@ -8,6 +8,7 @@ var tip: String
 var chances
 var dica
 func _ready():
+	clear_scene()
 	chances = 5
 	dica = false
 	for i in range(target.length()):
