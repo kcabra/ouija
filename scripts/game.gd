@@ -5,7 +5,7 @@ onready var forca_control = $forca
 
 var current_level = 0
 
-var monster_array: Array = ["bat", "frog", "plant", "moth", "crow", "spider"]
+var monster_array: Array = ["crow", "bat", "frog", "plant", "moth", "crow", "spider"]
 var loaded_monster = null
 
 func _ready():
