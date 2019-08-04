@@ -1,11 +1,12 @@
 extends Node2D
 
-onready var chances
-onready var dica
 onready var ouija = $keyboard # node whose childs are the clickable chars
 onready var target_spaces = $blank # node whose childs are the blanks and discovered chars
 var target: String
 
+var tip: String
+var chances
+var dica
 func _ready():
 	chances = 5
 	dica = false
