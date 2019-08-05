@@ -2,6 +2,7 @@ extends Node2D
 
 onready var tween = $Tween
 onready var forca_control = $forca
+onready var cards = $CanvasLayer/cards
 
 var current_level = 0
 
@@ -36,10 +37,31 @@ func load_monster(monster_name):
 
 
 func get_next_monster():
-	if not monster_array.empty():
+	var monster_to_load = monster_array.pop_front()
+	loaded_monster.queue_free()
+	if monster_to_load in ["frog", "plant", "spider"]:
+		var interlude
+		var tempo
+		match monster_to_load:
+			"frog":
+				interlude = "interlude1"
+				tempo = 3.0
+			"plant":
+				interlude = "interlude2"
+				tempo = 3.0
+			"spider":
+				interlude = "interlude3"
+				tempo = 5.0
+		var card = cards.get_node(interlude)
+		yield(get_tree().create_timer(0.5), "timeout")
+		card.visible = true
+		yield(get_tree().create_timer(tempo), "timeout")
+		load_monster(monster_to_load)
+		card.visible = false
+		
+	elif not monster_array.empty():
 		yield(get_tree().create_timer(0.3), "timeout")
 		get_node("CanvasLayer/ColorRect").visible = true
-		loaded_monster.queue_free()
 		yield(get_tree().create_timer(0.3), "timeout")
 		get_node("CanvasLayer/ColorRect").visible = false
 		yield(get_tree().create_timer(1.0), "timeout")
@@ -48,7 +70,7 @@ func get_next_monster():
 		get_node("CanvasLayer/ColorRect").visible = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		get_node("CanvasLayer/ColorRect").visible = true
-		load_monster(monster_array.pop_front())
+		load_monster(monster_to_load)
 		yield(get_tree().create_timer(0.7), "timeout")
 		get_node("CanvasLayer/ColorRect").visible = false
 	else:
