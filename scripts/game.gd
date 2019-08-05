@@ -3,7 +3,7 @@ extends Node2D
 onready var tween = $Tween
 onready var forca_control = $forca
 onready var cards = $CanvasLayer/cards
-
+onready var sfx_acerto = $acerto
 var current_level = 0
 
 var monster_array: Array = ["bat", "frog", "plant", "moth", "spider", "crow"]
@@ -37,19 +37,20 @@ func load_monster(monster_name):
 
 
 func get_next_monster():
+	sfx_acerto.play()
 	var monster_to_load = monster_array.pop_front()
 	loaded_monster.queue_free()
-	if monster_to_load in ["frog", "plant", "spider"]:
+	if monster_to_load in ["frog", "moth", "crow"]:
 		var interlude
 		var tempo
 		match monster_to_load:
 			"frog":
 				interlude = "interlude1"
 				tempo = 3.0
-			"plant":
+			"moth":
 				interlude = "interlude2"
 				tempo = 3.0
-			"spider":
+			"crow":
 				interlude = "interlude3"
 				tempo = 5.0
 		var card = cards.get_node(interlude)

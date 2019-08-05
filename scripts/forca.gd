@@ -3,6 +3,7 @@ extends Node2D
 onready var ouija = $keyboard # node whose childs are the clickable chars
 onready var target_spaces = $blank # node whose childs are the blanks and discovered chars
 onready var speak = $speak
+onready var sfx_erro = $erro
 var target: String
 var tip: String
 
@@ -10,6 +11,7 @@ var hp = 5
 var tip_shown = false
 
 func _ready():
+	randomize()
 	clear_scene()
 	if target == "nunca-mais" or target == "aracnofobia":
 		for i in range(target.length()):
@@ -57,6 +59,9 @@ func reveal(node):
 		get_parent().get_next_monster()
 
 func hit():
+	var error = String(randi() % 2)
+	sfx_erro.stream = load("res://soundtrack/erro"+error+".wav")
+	sfx_erro.play()
 	hp -= 1
 	if hp < 3 and tip_shown == false:
 		speak.speak(tip)
