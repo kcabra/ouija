@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://props/background.png" type="Texture" id=2]
@@ -38,13 +38,30 @@
 [ext_resource path="res://scenes/cards.tscn" type="PackedScene" id=36]
 
 [sub_resource type="GDScript" id=1]
+script/source = "extends Position2D
+
+var tween: Tween
+export var amplitude = 50
+var tempo = 0
+
+func _ready():
+	tween = Tween.new()
+	add_child(tween)
+	tween.repeat = true
+
+func _process(delta):
+	tempo += delta
+	$mist.position.y = sin(tempo*0.5) * amplitude
+	pass"
+
+[sub_resource type="GDScript" id=3]
 script/source = "extends Node2D
 
 func _ready():
 	for child in get_children():
 		child.connect(\"pressed\", get_parent(), \"reveal\", [child])"
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Node2D
 
 onready var parent = get_parent()
@@ -89,7 +106,7 @@ func _process(_delta):
 			get_node(\"4\").visible = false
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=5]
 script/source = "extends Sprite
 
 func _ready():
@@ -100,11 +117,11 @@ func speak(tip):
 	$Timer.start()
 	visible = true"
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 33
 font_data = ExtResource( 34 )
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=7]
 script/source = "extends AudioStreamPlayer
 
 func _ready():
@@ -115,14 +132,16 @@ func _ready():
 script = ExtResource( 1 )
 
 [node name="bg" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 300, 400 )
 z_index = -1
 texture = ExtResource( 2 )
 
-[node name="mist" type="Sprite" parent="bg"]
-modulate = Color( 1, 1, 1, 0.498039 )
+[node name="Position2D" type="Position2D" parent="bg"]
 position = Vector2( 0, -91 )
+script = SubResource( 1 )
+
+[node name="mist" type="Sprite" parent="bg/Position2D"]
+modulate = Color( 1, 1, 1, 0.498039 )
 texture = ExtResource( 3 )
 
 [node name="forca" type="Sprite" parent="."]
@@ -137,7 +156,7 @@ script = ExtResource( 5 )
 editor/display_folded = true
 position = Vector2( 1.05634, -13.7324 )
 scale = Vector2( 2.11268, 2.11268 )
-script = SubResource( 1 )
+script = SubResource( 3 )
 
 [node name="a" type="TextureButton" parent="forca/keyboard"]
 margin_left = -102.0
@@ -353,7 +372,7 @@ scale = Vector2( 2.11268, 2.11268 )
 
 [node name="determination" type="Node2D" parent="forca"]
 editor/display_folded = true
-script = SubResource( 2 )
+script = SubResource( 4 )
 
 [node name="0" type="Sprite" parent="forca/determination"]
 position = Vector2( 3.16904, -636.972 )
@@ -381,14 +400,14 @@ visible = false
 position = Vector2( 0, -457.394 )
 scale = Vector2( 0.783166, 0.783166 )
 texture = ExtResource( 33 )
-script = SubResource( 3 )
+script = SubResource( 5 )
 
 [node name="Label" type="Label" parent="forca/speak"]
 margin_left = -221.0
 margin_top = -77.0
 margin_right = 221.0
 margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "adslkja asjkdalsjkld asçdlkalçk saslçdasçlda aslçdals dçlas d"
 align = 1
@@ -405,9 +424,10 @@ one_shot = true
 stream = ExtResource( 35 )
 volume_db = -5.0
 autoplay = true
-script = SubResource( 5 )
+script = SubResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
