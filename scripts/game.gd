@@ -5,7 +5,7 @@ onready var forca_control = $forca
 
 var current_level = 0
 
-var monster_array: Array = ["bat", "frog", "plant", "moth", "crow", "spider"]
+var monster_array: Array = ["bat", "frog", "plant", "moth", "spider", "crow"]
 var loaded_monster = null
 
 func _ready():
@@ -37,6 +37,7 @@ func load_monster(monster_name):
 
 func get_next_monster():
 	if not monster_array.empty():
+		yield(get_tree().create_timer(0.3), "timeout")
 		get_node("CanvasLayer/ColorRect").visible = true
 		loaded_monster.queue_free()
 		yield(get_tree().create_timer(0.3), "timeout")
@@ -47,8 +48,9 @@ func get_next_monster():
 		get_node("CanvasLayer/ColorRect").visible = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		get_node("CanvasLayer/ColorRect").visible = true
-		yield(get_tree().create_timer(0.7), "timeout")
 		load_monster(monster_array.pop_front())
+		yield(get_tree().create_timer(0.7), "timeout")
 		get_node("CanvasLayer/ColorRect").visible = false
 	else:
-		print("you win!")
+		Data.won = true
+		get_tree().change_scene("res://scenes/endgame.tscn")

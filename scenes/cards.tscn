@@ -45,7 +45,6 @@ align = 1
 valign = 1
 
 [node name="tutorial" type="ColorRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = -14.0
 margin_top = -13.0
@@ -67,7 +66,7 @@ Criaturas irão tentar impedi-la:
 Você deve se comunicar através da tábua de Ouija,
 revelando para ela as soluções dos enigmas.
 
-Use a seta do mouse para clicar nas letras corretas.
+Use o mouse para clicar nas letras corretas.
 Mas cuidado!
 Para cada letra incorreta, um coração será perdido.
 
@@ -86,9 +85,9 @@ color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
 
 [node name="Label" type="Label" parent="creditos"]
 margin_left = -246.0
-margin_top = 105.0
+margin_top = 35.0
 margin_right = 900.0
-margin_bottom = 672.0
+margin_bottom = 792.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
 text = "Jogo carinhosamente feito para a Game Jam Plus 2019
@@ -98,6 +97,8 @@ Kalil Cabral e Tomás Manzi
 
 Efeitos sonoros e musicas fornecidos pelos sites
 Zapsplat.com e Soundbible.com
+
+ Fonte Chomsky por Fredrick Brennan
 
 Efeitos sonoros pelos artistas:
 Mike Koenig

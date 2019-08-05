@@ -7,22 +7,11 @@ var target: String
 var tip: String
 
 var hp = 5
-var tip_counter = 3
+var tip_shown = false
 
 func _ready():
 	clear_scene()
-	if not target == "nunca-mais":
-		for i in range(target.length()):
-			var letter_size = Vector2(25, 35)
-			var ch = target[i]
-			var blank = Sprite.new()
-			blank.set_script(load("res://scripts/char.gd"))
-			blank.character = ch
-			var total_size = letter_size.x * target.length()
-			blank.scale = Vector2.ONE / 4
-			blank.position = Vector2(-total_size/2, 0) + Vector2(letter_size.x, 0)*i
-			target_spaces.add_child(blank)
-	else:
+	if target == "nunca-mais" or target == "aracnofobia":
 		for i in range(target.length()):
 			var escala = 6
 			var letter_size = Vector2(100, 140) / escala
@@ -36,6 +25,17 @@ func _ready():
 			blank.scale = Vector2.ONE / escala
 			blank.position = Vector2(-total_size/2, 0) + Vector2(letter_size.x, 0)*i
 			target_spaces.add_child(blank)
+	else:
+		for i in range(target.length()):
+			var letter_size = Vector2(25, 35)
+			var ch = target[i]
+			var blank = Sprite.new()
+			blank.set_script(load("res://scripts/char.gd"))
+			blank.character = ch
+			var total_size = letter_size.x * target.length()
+			blank.scale = Vector2.ONE / 4
+			blank.position = Vector2(-total_size/2, 0) + Vector2(letter_size.x, 0)*i
+			target_spaces.add_child(blank)
 
 func reveal(node):
 	var ch = node.name
@@ -46,15 +46,7 @@ func reveal(node):
 			node.revealed = true
 			missed = false
 	if missed:
-		hp -= 1
-		tip_counter -= 1
-		if tip_counter == 0 or hp <= 2:
-			speak.visible = true
-			speak.get_node("Label").text = tip
-			speak.get_node("Timer").start()
-			tip_counter -= 1
-		if hp == 0: # check loss
-			print("lost")
+		hit()
 	# check victory
 	var won = true
 	for child in target_spaces.get_children():
@@ -62,11 +54,18 @@ func reveal(node):
 			won = false
 			break
 	if won:
-		hp += 1
 		get_parent().get_next_monster()
 
+func hit():
+	hp -= 1
+	if hp < 3 and tip_shown == false:
+		speak.speak(tip)
+		tip_shown = true
+	if hp == 0:
+		get_tree().change_scene("res://scenes/endgame.tscn")
+
 func clear_scene():
-	tip_counter = 3
+	tip_shown = false
 	for child in ouija.get_children():
 		child.modulate.a = 1
 	for child in target_spaces.get_children():

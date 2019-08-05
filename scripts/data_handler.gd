@@ -1,9 +1,9 @@
 extends Node
 
 var monster_db = Array()
+var won = false
 
 func _ready():
-	print("gothere")	
 	var enemy_data = File.new()
 	enemy_data.open("res://monster_db.txt", File.READ)
 	var lines = enemy_data.get_as_text().strip_edges().split("\n")
