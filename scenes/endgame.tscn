@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://title/você morreu.png" type="Texture" id=1]
-[ext_resource path="res://title/bruxa 2.png" type="Texture" id=2]
+[ext_resource path="res://title/bruxa 2.png" type="Texture" id=1]
+[ext_resource path="res://title/você morreu.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -24,7 +24,8 @@ func _ready():
 		Data.won = false
 	else:
 		$won.visible = false
-	again.connect(\"pressed\", self, \"to_game\")
+		if not Data.won:
+			again.connect(\"pressed\", self, \"to_game\")
 	menu.connect(\"pressed\", self, \"to_menu\")
 
 func to_game():
@@ -48,13 +49,13 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="voltar" type="TextureButton" parent="."]
-margin_left = 9.0
-margin_top = 533.0
-margin_right = 232.0
-margin_bottom = 684.0
+margin_left = 23.0
+margin_top = 601.0
+margin_right = 244.0
+margin_bottom = 709.0
 
 [node name="sair" type="TextureButton" parent="."]
-margin_left = 359.0
-margin_top = 598.0
-margin_right = 591.0
-margin_bottom = 760.0
+margin_left = 373.0
+margin_top = 607.0
+margin_right = 596.0
+margin_bottom = 719.0

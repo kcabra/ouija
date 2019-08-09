@@ -56,9 +56,9 @@ centered = false
 script = SubResource( 2 )
 
 [node name="jogar" type="TextureButton" parent="menu"]
-margin_left = 83.0
+margin_left = 81.1494
 margin_top = 558.0
-margin_right = 517.0
+margin_right = 515.149
 margin_bottom = 646.0
 
 [node name="creditos" type="TextureButton" parent="menu"]
