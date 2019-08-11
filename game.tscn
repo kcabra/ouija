@@ -56,14 +56,14 @@ func _process(delta):
 	$mist.position.y = sin(tempo*0.5) * amplitude
 	pass"
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
 
 func _ready():
 	for child in get_children():
 		child.connect(\"pressed\", get_parent(), \"reveal\", [child])"
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Node2D
 
 onready var parent = get_parent()
@@ -108,7 +108,7 @@ func _process(_delta):
 			get_node(\"4\").visible = false
 "
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Sprite
 
 func _ready():
@@ -119,11 +119,11 @@ func speak(tip):
 	$Timer.start()
 	visible = true"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 33
 font_data = ExtResource( 35 )
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=6]
 script/source = "extends AudioStreamPlayer
 
 func _ready():
@@ -156,6 +156,7 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="forca" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 298, 658 )
 scale = Vector2( 0.946667, 0.946667 )
 z_index = 1
@@ -166,7 +167,7 @@ script = ExtResource( 6 )
 editor/display_folded = true
 position = Vector2( 1.05634, -13.7324 )
 scale = Vector2( 2.11268, 2.11268 )
-script = SubResource( 3 )
+script = SubResource( 2 )
 
 [node name="a" type="TextureButton" parent="forca/keyboard"]
 margin_left = -102.0
@@ -382,7 +383,7 @@ scale = Vector2( 2.11268, 2.11268 )
 
 [node name="determination" type="Node2D" parent="forca"]
 editor/display_folded = true
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="0" type="Sprite" parent="forca/determination"]
 position = Vector2( 3.16904, -636.972 )
@@ -410,14 +411,14 @@ visible = false
 position = Vector2( 0, -457.394 )
 scale = Vector2( 0.783166, 0.783166 )
 texture = ExtResource( 34 )
-script = SubResource( 5 )
+script = SubResource( 4 )
 
 [node name="Label" type="Label" parent="forca/speak"]
 margin_left = -221.0
 margin_top = -77.0
 margin_right = 221.0
 margin_bottom = 70.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "adslkja asjkdalsjkld asçdlkalçk saslçdasçlda aslçdals dçlas d"
 align = 1
@@ -436,7 +437,7 @@ one_shot = true
 stream = ExtResource( 36 )
 volume_db = -5.0
 autoplay = true
-script = SubResource( 7 )
+script = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -452,8 +453,8 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="cards" parent="CanvasLayer" instance=ExtResource( 37 )]
 
-[node name="tutorial" parent="CanvasLayer/cards" index="1"]
-editor/display_folded = true
+[node name="Label" parent="CanvasLayer/cards/ColorRect" index="0"]
+text = "--FINISHED--"
 
 [node name="acerto" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 38 )

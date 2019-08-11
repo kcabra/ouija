@@ -1,183 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://title/Chomsky.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/cards.gd" type="Script" id=1]
 [ext_resource path="res://title/bruxa 2.png" type="Texture" id=2]
 [ext_resource path="res://title/você morreu.png" type="Texture" id=3]
+[ext_resource path="res://title/Chomsky.otf" type="DynamicFontData" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 22
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=2]
+size = 48
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = -1
+extra_spacing_space = 14
+font_data = ExtResource( 4 )
 
 [node name="cards" type="Node2D"]
-
-[node name="intro" type="ColorRect" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = -14.0
-margin_top = -13.0
-margin_right = 613.0
-margin_bottom = 814.0
-color = Color( 0.905882, 0.905882, 0.905882, 1 )
-
-[node name="Label" type="Label" parent="intro"]
-margin_left = -10.0
-margin_top = 132.0
-margin_right = 642.0
-margin_bottom = 699.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "
-Seres do abismo,
-almas perdidas,
-ajudem uma pessoa perdida como vocês.
-
-Não sei por onde começar a dizer como cheguei nessa situação.
- 
-Más escolhas?
-
-Má sorte? 
-
-Talvez os dois…?
-
-Que lugar é esse? Um pesadelo?
-Por favor, me ajudem a escapar..."
-align = 1
-valign = 1
-
-[node name="tutorial" type="ColorRect" parent="."]
-visible = false
-margin_left = -14.0
-margin_top = -13.0
-margin_right = 613.0
-margin_bottom = 814.0
-color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
-
-[node name="Label" type="Label" parent="tutorial"]
-margin_left = -246.0
-margin_top = 105.0
-margin_right = 900.0
-margin_bottom = 672.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
-text = "Você é um espírito com o objetivo
-de guiar a bruxa através de um pesadelo.
-
-Criaturas irão tentar impedi-la:
-Você deve se comunicar através da tábua de Ouija,
-revelando para ela as soluções dos enigmas.
-
-Use o mouse para clicar nas letras corretas.
-Mas cuidado!
-Para cada letra incorreta, um coração será perdido.
-
-Se os 5 corações se perderem, você perde ."
-align = 1
-valign = 1
-
-[node name="creditos" type="ColorRect" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = -14.0
-margin_top = -13.0
-margin_right = 613.0
-margin_bottom = 814.0
-color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
-
-[node name="Label" type="Label" parent="creditos"]
-margin_left = -246.0
-margin_top = 35.0
-margin_right = 900.0
-margin_bottom = 792.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
-text = "Jogo carinhosamente feito para a Game Jam Plus 2019
-por Bernardo Russo, Jojoba,
-Kalil Cabral e Tomás Manzi
-
-
-Efeitos sonoros e musicas fornecidos pelos sites
-Zapsplat.com e Soundbible.com
-
- Fonte Chomsky por Fredrick Brennan
-
-Efeitos sonoros pelos artistas:
-Mike Koenig
-Leonell Cassio
-FreeToUseSounds
-Little Robot Sound Factory
-The Sound Pack Tree
-Skyes Audio
-ZapSplat
-Audiohero
-"
-align = 1
-valign = 1
-
-[node name="interlude1" type="ColorRect" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = -14.0
-margin_top = -13.0
-margin_right = 613.0
-margin_bottom = 814.0
-color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
-
-[node name="Label" type="Label" parent="interlude1"]
-margin_left = -246.0
-margin_top = 105.0
-margin_right = 900.0
-margin_bottom = 672.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
-text = "Minhas pernas? Porque não estou sentindo minhas pernas?
-Minhas memórias estão embaralhadas..."
-align = 1
-valign = 1
-
-[node name="interlude2" type="ColorRect" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = -14.0
-margin_top = -13.0
-margin_right = 613.0
-margin_bottom = 814.0
-color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
-
-[node name="Label" type="Label" parent="interlude2"]
-margin_left = -246.0
-margin_top = 105.0
-margin_right = 900.0
-margin_bottom = 672.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
-text = "Não é só minhas pernas... Meu pulmão?
-Porque não estou conseguindo consigo puxar o ar?
-Acho que estou começando a me lembrar..."
-align = 1
-valign = 1
-
-[node name="interlude3" type="ColorRect" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = -14.0
-margin_top = -13.0
-margin_right = 613.0
-margin_bottom = 814.0
-color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
-
-[node name="Label" type="Label" parent="interlude3"]
-margin_left = -246.0
-margin_top = 105.0
-margin_right = 900.0
-margin_bottom = 672.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
-text = "Agora eu entendi… Agora tudo faz sentido…
-Realmente, não existe outra maneira.
-Obrigado por me mostrar isso.
-Agora, chegou a hora de nos despedirmos."
-align = 1
-valign = 1
+script = ExtResource( 1 )
 
 [node name="win" type="TextureRect" parent="."]
 visible = false
@@ -190,3 +27,22 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -14.0
+margin_top = -13.0
+margin_right = 613.0
+margin_bottom = 814.0
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "This is a text test"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Tween" type="Tween" parent="."]

@@ -1,0 +1,57 @@
+#INTRO
+Seres do abismo, almas perdidas,
+ajudem uma pessoa perdida como vocês.
+
+Não sei por onde começar a dizer como cheguei nessa situação.
+Más escolhas?
+Má sorte? 
+Talvez os dois…?
+
+Que lugar é esse? Um pesadelo?
+Por favor, me ajudem a escapar...
+
+#TUTORIAL
+Você é um espírito com o objetivo
+de guiar a bruxa através de um pesadelo.
+
+Criaturas irão tentar impedi-la:
+Você deve se comunicar através da tábua de Ouija,
+revelando para ela as soluções dos enigmas.
+
+Use o mouse para clicar nas letras corretas.
+Mas cuidado!
+Para cada letra incorreta, um coração será perdido.
+
+Se os 5 corações se perderem, você perde.
+
+#CREDITOS
+Jogo carinhosamente feito para a Game Jam Plus 2019 por Bernardo Russo, Jojoba, Kalil Cabral e Tomás Manzi
+
+Fonte Chomsky por Fredrick Brennan
+
+Efeitos sonoros e musicas fornecidos pelos sites Zapsplat.com e Soundbible.com
+
+Efeitos sonoros pelos artistas:
+Mike Koenig
+Leonell Cassio
+FreeToUseSounds
+Little Robot Sound Factory
+The Sound Pack Tree
+Skyes Audio
+ZapSplat
+Audiohero
+
+#INTERLUDE1
+Minhas pernas? Porque não estou sentindo minhas pernas?
+Minhas memórias estão embaralhadas...
+
+#INTERLUDE2
+Não é só minhas pernas... Meu pulmão?
+Porque não estou conseguindo consigo puxar o ar?
+Acho que estou começando a me lembrar...
+
+#INTERLUDE3
+Agora eu entendi… Agora tudo faz sentido…
+Realmente, não existe outra maneira.
+Obrigado por me mostrar isso.
+Agora, chegou a hora de nos despedirmos.
